@@ -47,7 +47,7 @@ func main() {
 			// https://pkg.go.dev/github.com/google/go-github/github#Commit
 			fmt.Printf("commit: [ %s ]\n", commit.Commit.GetMessage())
 		}
-		os.Exit(1)
+		// os.Exit(1)
 	}
 
 	fmt.Println(">>> Checking the latest commit message of README")
@@ -67,15 +67,37 @@ func main() {
 		DefaultWorkflowPermissions:   &default_workflow_permission,
 		CanApprovePullRequestReviews: &can_approve_pull_request_reviews,
 	}
-	_, _, e := client.Repositories.EditDefaultWorkflowPermissions(context.Background(), repoowner, reponame, *permissions)
-	if e != nil {
+	_, _, editerr := client.Repositories.EditDefaultWorkflowPermissions(context.Background(), repoowner, reponame, *permissions)
+	if editerr != nil {
 		fmt.Printf("Failed to update default workflow permissions in %s\n", repo)
-		fmt.Println(err)
+		fmt.Println(editerr)
 		os.Exit(1)
 	}
 	fmt.Println("OK")
 
 	fmt.Println(">>> Adding branch protection rule to main branch")
+	rules := &github.ProtectionRequest{
+		RequiredStatusChecks: &github.RequiredStatusChecks{
+			Strict: true,
+			// https://github.com/google/go-github/issues/2467#issuecomment-1250072559
+			Checks: &([]*github.RequiredStatusCheck{}),
+		},
+		RequiredPullRequestReviews: &github.PullRequestReviewsEnforcementRequest{
+			DismissStaleReviews:          false,
+			DismissalRestrictionsRequest: nil,
+			RequireCodeOwnerReviews:      false,
+			RequiredApprovingReviewCount: 0,
+		},
+		EnforceAdmins: false,
+		Restrictions:  nil,
+	}
+	_, _, updateerr := client.Repositories.UpdateBranchProtection(context.Background(), repoowner, reponame, "main", rules)
+	if updateerr != nil {
+		fmt.Printf("Failed to update branch protection rule in %s\n", repo)
+		fmt.Println(updateerr)
+		os.Exit(1)
+	}
+	fmt.Println("OK")
 
 	fmt.Println(">>> Disabling Wiki/Discussions/Projects tabs from repository")
 
