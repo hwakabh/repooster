@@ -11,6 +11,8 @@ import (
 
 func main() {
 	const repo string = "hwakabh/repooster"
+	repoowner := strings.Split(repo, "/")[0]
+	reponame := strings.Split(repo, "/")[1]
 
 	fmt.Println("Hello go-github !")
 
@@ -29,7 +31,7 @@ func main() {
 
 	// https://pkg.go.dev/github.com/google/go-github/github#RepositoriesService.ListCommits
 	opt := &github.CommitsListOptions{Path: "./README.md"}
-	commits, _, err := client.Repositories.ListCommits(context.Background(), strings.Split(repo, "/")[0], strings.Split(repo, "/")[1], opt)
+	commits, _, err := client.Repositories.ListCommits(context.Background(), repoowner, reponame, opt)
 	if err != nil {
 		fmt.Println("Failed to fetch list of commits")
 		fmt.Println(err)
@@ -57,4 +59,24 @@ func main() {
 	}
 
 	fmt.Println("Now we can start initialize the repository!")
+
+	fmt.Println(">>> Updating workflow permission for GitHub actions")
+	default_workflow_permission := "write"
+	can_approve_pull_request_reviews := true
+	permissions := &github.DefaultWorkflowPermissionRepository{
+		DefaultWorkflowPermissions:   &default_workflow_permission,
+		CanApprovePullRequestReviews: &can_approve_pull_request_reviews,
+	}
+	_, _, e := client.Repositories.EditDefaultWorkflowPermissions(context.Background(), repoowner, reponame, *permissions)
+	if e != nil {
+		fmt.Printf("Failed to update default workflow permissions in %s\n", repo)
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	fmt.Println("OK")
+
+	fmt.Println(">>> Adding branch protection rule to main branch")
+
+	fmt.Println(">>> Disabling Wiki/Discussions/Projects tabs from repository")
+
 }
