@@ -13,18 +13,21 @@ func main() {
 	// Fetch CLI args and validations
 	args := os.Args
 	if len(args) != 2 {
-		fmt.Println("Too many arguments, please run `repooster owner/repo`.")
+		fmt.Println("Too many or insufficient arguments, please run `repooster owner/name`")
+		PrintHelp()
 		os.Exit(1)
 	}
 
-	if args[1] == "help" {
-		fmt.Println("Help menu here")
-		os.Exit(1)
+	if args[1] == "help" || args[1] == "-h" || args[1] == "--help" {
+		fmt.Println("repooster kickstarts the initial configurations of scaffolded GitHub repository")
+		PrintHelp()
+		os.Exit(0)
 	}
 
 	repo := os.Args[1]
 	if len(strings.Split(repo, "/")) != 2 {
-		fmt.Println("Invalid arguments, argument should be `owner/repo` format.")
+		fmt.Println("Invalid arguments, argument should be `owner/name` format.")
+		PrintHelp()
 		os.Exit(1)
 	}
 
@@ -36,7 +39,7 @@ func main() {
 	fmt.Println(">>> Fetching GitHub Personal Access Token ...")
 	token, ret := os.LookupEnv("TOKEN")
 	if ret != true {
-		fmt.Println("Failed to fetch GitHub token, please set GH_TOKEN first.")
+		fmt.Println("Failed to fetch GitHub token, please set TOKEN first.")
 		// Note that os.Exit() will not call the logics of `defer`
 		os.Exit(1)
 	}
@@ -145,4 +148,17 @@ func main() {
 		os.Exit(1)
 	}
 	fmt.Println("OK")
+}
+
+func PrintHelp() {
+	fmt.Println("")
+	fmt.Println("Usage:")
+	fmt.Println("  repooster [args|subcommands]")
+	fmt.Println("")
+	fmt.Println("Arguments:")
+	fmt.Println("  owner/name	Strings of GitHub repository")
+	fmt.Println("")
+	fmt.Println("Subcommands:")
+	fmt.Println("  version	Prints the repooster CLI version")
+	fmt.Println("  help		Print this help")
 }
