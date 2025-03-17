@@ -1,22 +1,27 @@
-# {{ repository_name }}
-Note: This file is expected to generate from template. See [.github wiki](https://github.com/hwakabh/.github/wiki) for detailed instructions.
+# repooster
+GitHub Repository kickstarter
 
-## Templating checklists
-- [ ] Replace `{{ repository_name }}` as placeholder text above with your repository name
-- [ ] Initialize default labels with `github-label-setup` command
-- [ ] Adjust `CODEOWNERS`
-- [ ] Update `release-type` in [`.github/config/release-please-config.json`](./.github/config/release-please-config.json) (default: `python`)
-  - See more in documents of [release-please](https://github.com/googleapis/release-please?tab=readme-ov-file#strategy-language-types-supported)
-- [ ] Replace `GH_USERNAME` and `GH_REPONAME` in [CONTRIBUTING.md](./CONTRIBUTING.md)
-- [ ] Validate repository access of [semantic-prs](https://github.com/Ezard/semantic-prs) GitHub Apps, whose configurations exists [`.github/semantic.yml`](./.github/semantic.yml)
-- [ ] Enable `Allow GitHub Actions to create and approve pull requests` as Workflow Permision in repository settings
-  - release-please requires permission to raise PR with your repository and for this you need to update workflow permission in your repository settings
-  - Refer to the capture below and enable GitHub Actions to raise PR to your repository
+## What is repooster
+With using [`go-github`](https://github.com/google/go-github), `repooster` will do the following configurations:
 
-![Workflow Permissions](https://github.com/user-attachments/assets/8018b45c-571d-4245-a71e-1c5ec678baff)
+1. Workflow Permissions
+<https://docs.github.com/en/enterprise-cloud@latest/rest/actions/permissions?apiVersion=2022-11-28#set-default-workflow-permissions-for-a-repository>
 
-Then, you can clean texts above in this section and update with any of descriptions for your project!
-The following headers are skeletons of basic README.
+2. `main` branch protections
+<https://docs.github.com/en/rest/branches/branch-protection?apiVersion=2022-11-28#update-branch-protection>
+
+3. Disabling `Discussions`, `Projects`, and `Wiki` tabs
+<https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository>
+
+## Distributions
+Since `repooster` application has been built on top of CLI driven, the CLI has been available with the several form-factors:
+- [GitHub Actions](https://docs.github.com/en/actions)
+- Container images, stored in [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+
+### repooster-actions
+
+### Container image
+
 
 ## Local Setup
 Environmental variables, Makefile, docker-compose, ...etc
