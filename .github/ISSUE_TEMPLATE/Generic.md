@@ -7,12 +7,7 @@ assignees: ''
 
 ---
 
-## AsIs
+## AsIs (with optional Justifications)
 
 
-## Justifications
-
-
-## (Optional) ToDo
-- [ ]
-- [ ]
+## ToBe
