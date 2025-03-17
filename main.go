@@ -31,10 +31,10 @@ func main() {
 
 	// https://pkg.go.dev/github.com/google/go-github/github#RepositoriesService.ListCommits
 	opt := &github.CommitsListOptions{Path: "./README.md"}
-	commits, _, err := client.Repositories.ListCommits(context.Background(), repoowner, reponame, opt)
-	if err != nil {
+	commits, _, listerr := client.Repositories.ListCommits(context.Background(), repoowner, reponame, opt)
+	if listerr != nil {
 		fmt.Println("Failed to fetch list of commits")
-		fmt.Println(err)
+		fmt.Println(listerr)
 		os.Exit(1)
 	}
 
@@ -100,5 +100,32 @@ func main() {
 	fmt.Println("OK")
 
 	fmt.Println(">>> Disabling Wiki/Discussions/Projects tabs from repository")
-
+	// Fetch repository instance
+	// https://github.com/google/go-github/blob/master/github/repos.go#L630
+	r, _, fetcherr := client.Repositories.Get(context.Background(), repoowner, reponame)
+	if fetcherr != nil {
+		fmt.Printf("Failed to get information of repository: [ %s ]\n", repo)
+		fmt.Println(r)
+		os.Exit(1)
+	}
+	// fmt.Println(r)
+	rbody := struct {
+		has_discussions bool
+		has_projects    bool
+		has_wiki        bool
+	}{
+		false,
+		false,
+		false,
+	}
+	_, _, err := client.Repositories.Edit(context.Background(), repoowner, reponame, &github.Repository{
+		HasDiscussions: &rbody.has_discussions,
+		HasProjects:    &rbody.has_projects,
+		HasWiki:        &rbody.has_wiki,
+	})
+	if err != nil {
+		fmt.Printf("Failed to update project tabs in %s\n", repo)
+		os.Exit(1)
+	}
+	fmt.Println("OK")
 }
