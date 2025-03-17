@@ -47,7 +47,7 @@ func main() {
 			// https://pkg.go.dev/github.com/google/go-github/github#Commit
 			fmt.Printf("commit: [ %s ]\n", commit.Commit.GetMessage())
 		}
-		// os.Exit(1)
+		os.Exit(1)
 	}
 
 	fmt.Println(">>> Checking the latest commit message of README")
