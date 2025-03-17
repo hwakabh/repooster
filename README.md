@@ -1,6 +1,7 @@
 # repooster
 GitHub Repository kickstarter
 
+<!-- *** -->
 ## What is repooster
 With using [`go-github`](https://github.com/google/go-github), `repooster` will do the following configurations:
 
@@ -13,6 +14,7 @@ With using [`go-github`](https://github.com/google/go-github), `repooster` will 
 3. Disabling `Discussions`, `Projects`, and `Wiki` tabs
 <https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository>
 
+<!-- *** -->
 ## Distributions
 Since `repooster` application has been built on top of CLI driven, the CLI has been available with the several form-factors:
 - [GitHub Actions](https://docs.github.com/en/actions)
@@ -20,14 +22,34 @@ Since `repooster` application has been built on top of CLI driven, the CLI has b
 
 ### repooster-actions
 
+
+#### Usage
+
+
+#### Inputs
+
+
+#### Outputs
+
+
 ### Container image
 
+```shell
+% docker image pull ghcr.io/hwakabh/repooster:main
+```
 
+<!-- *** -->
 ## Local Setup
 Environmental variables, Makefile, docker-compose, ...etc
 
-## Good to know / Caveats
-Anything if you have
 
-## License
-Choose licenses for your project, see more details in [GitHub Official Docs](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository)
+<!-- *** -->
+## Configurations
+
+### The Fine-grained Token permission for this repository.
+As this repository will invoke and update configurations of GitHub repository, we need to set GitHub Token, which has permissions of:
+- `Read` for Commits
+- `Read and write` for Administration
+
+For generating fine-grained tokens, please refer [the official documents](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) for futher information.
+
