@@ -10,14 +10,31 @@ import (
 )
 
 func main() {
-	const repo string = "hwakabh/repooster"
+	// Fetch CLI args and validations
+	args := os.Args
+	if len(args) != 2 {
+		fmt.Println("Too many arguments, please run `repooster owner/repo`.")
+		os.Exit(1)
+	}
+
+	if args[1] == "help" {
+		fmt.Println("Help menu here")
+		os.Exit(1)
+	}
+
+	repo := os.Args[1]
+	if len(strings.Split(repo, "/")) != 2 {
+		fmt.Println("Invalid arguments, argument should be `owner/repo` format.")
+		os.Exit(1)
+	}
+
 	repoowner := strings.Split(repo, "/")[0]
 	reponame := strings.Split(repo, "/")[1]
 
 	fmt.Println("Hello go-github !")
 
 	fmt.Println(">>> Fetching GitHub Personal Access Token ...")
-	token, ret := os.LookupEnv("GH_TOKEN")
+	token, ret := os.LookupEnv("TOKEN")
 	if ret != true {
 		fmt.Println("Failed to fetch GitHub token, please set GH_TOKEN first.")
 		// Note that os.Exit() will not call the logics of `defer`
