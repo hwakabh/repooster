@@ -5,37 +5,31 @@ GitHub Repository kickstarter
 ## What is repooster
 With using [`go-github`](https://github.com/google/go-github), `repooster` will do the following configurations:
 
-1. Workflow Permissions
-<https://docs.github.com/en/enterprise-cloud@latest/rest/actions/permissions?apiVersion=2022-11-28#set-default-workflow-permissions-for-a-repository>
+1. [Workflow Permissions](https://docs.github.com/en/enterprise-cloud@latest/rest/actions/permissions?apiVersion=2022-11-28#set-default-workflow-permissions-for-a-repository)
 
-2. `main` branch protections
-<https://docs.github.com/en/rest/branches/branch-protection?apiVersion=2022-11-28#update-branch-protection>
+2. [`main` branch protections](https://docs.github.com/en/rest/branches/branch-protection?apiVersion=2022-11-28#update-branch-protection)
 
-3. Disabling `Discussions`, `Projects`, and `Wiki` tabs
-<https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository>
+3. [Disabling `Discussions`, `Projects`, and `Wiki` tabs](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository)
 
 <!-- *** -->
 ## Distributions
 Since `repooster` application has been built on top of CLI driven, the CLI has been available with the several form-factors:
-- [GitHub Actions](https://docs.github.com/en/actions)
+- Single Binary
 - Container images, stored in [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 
-### repooster-actions
+### Single Binary
 
-
-#### Usage
-
-
-#### Inputs
-
-
-#### Outputs
-
+```shell
+% export TOKEN='...'
+% repooster hwakabh/repooster
+```
 
 ### Container image
 
 ```shell
+% export TOKEN='...'
 % docker image pull ghcr.io/hwakabh/repooster:main
+% docker run -e TOKEN=$TOKEN ghcr.io/hwakabh/repooster:main hwakabh/repooster
 ```
 
 <!-- *** -->
