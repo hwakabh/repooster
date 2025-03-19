@@ -1,0 +1,27 @@
+name: Builds
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Go app container image
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: './go.mod'
+
+      - name: Setup ko for Go build
+        uses: ko-build/setup-ko@v0.8
+
+      - name: Build Go application with ko
+        run: ko build -L .
