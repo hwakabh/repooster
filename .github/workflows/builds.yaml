@@ -8,8 +8,22 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    name: Build Go app container image
+  app-build:
+    name: Build Go app
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: './go.mod'
+      - name: Build Go application
+        run: go build .
+
+  image-build:
+    name: Build Go container image
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
