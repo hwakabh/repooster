@@ -1,0 +1,47 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  # builds for linux/mac/win
+  publish-clis:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: './go.mod'
+
+      # TODO: Cross-compiled with Go
+      # - name: Build binaries
+
+  publish-images:
+    name: Publish container image to GHCR
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: './go.mod'
+
+      - name: Setup ko for Go
+        uses: ko-build/setup-ko@v0.8
+
+      - name: Build Go application image and push to GHCR with ko
+        env:
+          KO_DOCKER_REPO: ghcr.io/hwakabh
+        run: ko build -B
