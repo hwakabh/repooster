@@ -43,4 +43,6 @@ jobs:
         uses: ko-build/setup-ko@v0.8
 
       - name: Build Go application image and push to GHCR with ko
-        run: ko build
+        env:
+          KO_DOCKER_REPO: ghcr.io/hwakabh
+        run: ko build -B
