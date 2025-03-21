@@ -16,6 +16,16 @@ jobs:
   publish-clis:
     runs-on: ubuntu-24.04
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: './go.mod'
+
+      # TODO: Cross-compiled with Go
+      # - name: Build binaries
 
   publish-images:
     name: Publish container image to GHCR
