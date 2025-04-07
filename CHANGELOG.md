@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.2](https://github.com/hwakabh/repooster/compare/v0.3.1...v0.3.2) (2025-04-07)
+
+
+### Other Changes
+
+* **deps:** update dependency go to v1.24.2 ([4700df2](https://github.com/hwakabh/repooster/commit/4700df26ac061899b06276611e67aba44200bde9))
+* **deps:** update dependency go to v1.24.2 ([3c11f21](https://github.com/hwakabh/repooster/commit/3c11f212eca5bf46a6b228a32bfaa6f96040b4cd))
+* **deps:** update hwakabh/semantic-issue-action action to v0.5.4 ([50c260c](https://github.com/hwakabh/repooster/commit/50c260c9d8ab3c3243173de2cb1bcb4db696580c))
+* **deps:** update hwakabh/semantic-issue-action action to v0.5.4 ([f308f0c](https://github.com/hwakabh/repooster/commit/f308f0cc8cb12d83213ad171a3a3049eed0f2f1d))
+
 ## [0.3.1](https://github.com/hwakabh/repooster/compare/v0.3.0...v0.3.1) (2025-03-26)
 
 
