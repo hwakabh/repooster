@@ -35,7 +35,7 @@ jobs:
           go-version-file: './go.mod'
 
       - name: Setup ko for Go build
-        uses: ko-build/setup-ko@v0.8
+        uses: ko-build/setup-ko@v0.9
 
       - name: Build Go application with ko
         run: ko build -L .
