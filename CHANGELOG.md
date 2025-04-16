@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.4](https://github.com/hwakabh/repooster/compare/v0.3.3...v0.3.4) (2025-04-16)
+
+
+### Continuous Integration
+
+* added workflow to upload artifacts ([eec367c](https://github.com/hwakabh/repooster/commit/eec367cd8ed3fa9803898fd1916a9392836de819))
+* added workflows to uploading build binaries. ([03e407d](https://github.com/hwakabh/repooster/commit/03e407d59aaa31535398550685a71215b6738582))
+* enabled to use PAT instead of build-in token. ([6cc48ff](https://github.com/hwakabh/repooster/commit/6cc48ff98567c540a95a35c41d3f06bf04cfd894))
+* fixed runs-on fields. ([b765e5d](https://github.com/hwakabh/repooster/commit/b765e5dc963299891ee7bcf8b167979dd2d5bcdf))
+* fixed workflow triggers. ([01835c2](https://github.com/hwakabh/repooster/commit/01835c2d9aebb7f218dd8cd41eb270825266c986))
+
+
+### Bug Fixes
+
+* added features to get CLI version from package version. ([a97bc54](https://github.com/hwakabh/repooster/commit/a97bc54898142a90d5410e72e9a5f38f1a23189d))
+* added features to get CLI version from package version. ([885d55b](https://github.com/hwakabh/repooster/commit/885d55b670c7c9ea2470487ef7dcc2e25835b95d))
+
 ## [0.3.3](https://github.com/hwakabh/repooster/compare/v0.3.2...v0.3.3) (2025-04-16)
 
 
