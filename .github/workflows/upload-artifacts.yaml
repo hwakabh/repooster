@@ -23,7 +23,7 @@ jobs:
           - os: darwin
             arch: arm64
           - os: windows
-            arch: arm64
+            arch: amd64
           - os: windows
             arch: arm64
 
@@ -37,8 +37,6 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version-file: './go.mod'
-      - name: Build Go application
-        run: go build .
 
       - name: Build binaries
         run: |
