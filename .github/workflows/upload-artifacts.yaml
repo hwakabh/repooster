@@ -28,7 +28,7 @@ jobs:
           - os: windows
             arch: arm64
 
-    runs-on: ${{ matrix.builds.os }}
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout
