@@ -1,10 +1,9 @@
 name: Upload assets to release
 
 on:
-  # push:
-  #   tags:
-  #     - "v*.*.*"
-  pull_request:
+  push:
+    tags:
+      - "v*.*.*"
   workflow_dispatch:
 
 permissions:
