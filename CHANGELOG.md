@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.6](https://github.com/hwakabh/repooster/compare/v0.3.5...v0.3.6) (2025-04-16)
+
+
+### Bug Fixes
+
+* **ci:** GOARCH for Window platform, and removed duplicated steps. ([bd3b499](https://github.com/hwakabh/repooster/commit/bd3b4991fb64f60084cbb811e33eae80f04a1464))
+* **ci:** GOARCH for Window platform, and removed duplicated steps. ([91345f7](https://github.com/hwakabh/repooster/commit/91345f72e99df3dfb6760af6628b341f8ae66c19))
+
 ## [0.3.5](https://github.com/hwakabh/repooster/compare/v0.3.4...v0.3.5) (2025-04-16)
 
 
