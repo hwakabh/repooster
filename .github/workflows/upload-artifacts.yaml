@@ -1,0 +1,63 @@
+name: Upload assets to release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-assets:
+    strategy:
+      matrix:
+        builds:
+          - os: linux
+            arch: amd64
+          - os: linux
+            arch: arm64
+          - os: darwin
+            arch: amd64
+          - os: darwin
+            arch: arm64
+          - os: windows
+            arch: arm64
+          - os: windows
+            arch: arm64
+
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: './go.mod'
+      - name: Build Go application
+        run: go build .
+
+      - name: Build binaries
+        run: |
+          echo "Compiling repooster ${{ github.ref_name }} binary for ${{ matrix.builds.os }}/${{ matrix.builds.arch }} ..."
+          GOOS=${{ matrix.builds.os }} GOARCH=${{ matrix.builds.arch }} go build -o repooster_${{ matrix.builds.arch }}-${{ matrix.builds.arch }}-${{ github.ref_name }}
+
+      - name: Generate checksum file
+        run: |
+          echo "Generating check sum file: repooster_${{ matrix.builds.arch }}-${{ matrix.builds.arch }}-${{ github.ref_name }}.sha256"
+          shasum -a 256 repooster_${{ matrix.builds.arch }}-${{ matrix.builds.arch }}-${{ github.ref_name }} > repooster_${{ matrix.builds.arch }}-${{ matrix.builds.arch }}-${{ github.ref_name }}.sha256
+
+      - name: Upload assets to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Uploading assets for repooster release ${{ github.ref_name }}"
+
+          echo "Uploading binary file: repooster_${{ matrix.builds.arch }}-${{ matrix.builds.arch }}-${{ github.ref_name }}"
+          gh release upload ${{ github.ref_name }} repooster_${{ matrix.builds.arch }}-${{ matrix.builds.arch }}-${{ github.ref_name }}
+
+          echo "Uploading checksum file: repooster_${{ matrix.builds.arch }}-${{ matrix.builds.arch }}-${{ github.ref_name }}.sha256"
+          gh release upload ${{ github.ref_name }} repooster_${{ matrix.builds.arch }}-${{ matrix.builds.arch }}-${{ github.ref_name }}.sha256
