@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.5](https://github.com/hwakabh/repooster/compare/v0.3.4...v0.3.5) (2025-04-16)
+
+
+### Bug Fixes
+
+* **ci:** released filenames. ([851c956](https://github.com/hwakabh/repooster/commit/851c9565b35ea079dd14a3976b4f0a7ce9177982))
+* **ci:** released filenames. ([d5dec98](https://github.com/hwakabh/repooster/commit/d5dec98790b1d8b18e9593f7100252f00f5eed17))
+
 ## [0.3.4](https://github.com/hwakabh/repooster/compare/v0.3.3...v0.3.4) (2025-04-16)
 
 
