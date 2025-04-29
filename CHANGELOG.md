@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.7](https://github.com/hwakabh/repooster/compare/v0.3.6...v0.3.7) (2025-04-29)
+
+
+### Documentation
+
+* added details to README. ([d4b259d](https://github.com/hwakabh/repooster/commit/d4b259dbedbdbe222d285ac42aa181cd10c8255c))
+* added details to README. ([4e09c8d](https://github.com/hwakabh/repooster/commit/4e09c8dfceb69fff7b63df1013a91b719a715a68))
+
+
+### Bug Fixes
+
+* included static files in build phase. ([b605e9b](https://github.com/hwakabh/repooster/commit/b605e9baa334d387a66ee2318c79a80d859d8857))
+* included static files in build phase. ([82742c6](https://github.com/hwakabh/repooster/commit/82742c6954b4e1ce4d67b31c0a09aaad43fae6d2))
+
 ## [0.3.6](https://github.com/hwakabh/repooster/compare/v0.3.5...v0.3.6) (2025-04-16)
 
 
