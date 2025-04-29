@@ -2,16 +2,12 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"io"
 	"os"
 	"strings"
 
 	"github.com/google/go-github/v69/github"
 )
-
-const VERSION_FILE_NAME string = ".release-please-manifest.json"
 
 func main() {
 	// Fetch CLI args and validations
@@ -23,7 +19,7 @@ func main() {
 	}
 
 	if args[1] == "version" || args[1] == "-v" || args[1] == "--version" {
-		version := GetCLIVersionFromFile(VERSION_FILE_NAME)
+		version := GetCLIVersion()
 		fmt.Printf("repooster version %s\n", version)
 		os.Exit(0)
 	}
@@ -171,32 +167,4 @@ func PrintHelp() {
 	fmt.Println("Subcommands:")
 	fmt.Println("  version	Prints the repooster CLI version")
 	fmt.Println("  help		Print this help")
-}
-
-type VersionString struct {
-	Path string `json:"."`
-}
-
-func GetCLIVersionFromFile(fname string) string {
-	if _, err := os.Stat(fname); err != nil {
-		fmt.Print("Version file not exists")
-		os.Exit(1)
-	}
-
-	fp, err := os.Open(fname)
-	if err != nil {
-		fmt.Printf("Failed to open version file: %s\n", fname)
-		os.Exit(1)
-	}
-	defer fp.Close()
-
-	raw, e := io.ReadAll(fp)
-	if e != nil {
-		fmt.Println("Failed to read JSON file")
-		fmt.Println(e)
-		os.Exit(1)
-	}
-	var version VersionString
-	json.Unmarshal(raw, &version)
-	return version.Path
 }
