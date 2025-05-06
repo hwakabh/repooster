@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.9](https://github.com/hwakabh/repooster/compare/v0.3.8...v0.3.9) (2025-05-06)
+
+
+### Other Changes
+
+* adjusted stdout message. ([a3c256d](https://github.com/hwakabh/repooster/commit/a3c256dc12456768ef3c6d0f92c61aba7142c8e2))
+* minor updates ([43a4e8e](https://github.com/hwakabh/repooster/commit/43a4e8e8e7f6942f33df8e03415c233517d3797e))
+* moved CODEOWNDERS inside .github. ([353d374](https://github.com/hwakabh/repooster/commit/353d3743b2718806020bea5c13d50943767f7b0c))
+
+
+### Documentation
+
+* fixed container label. ([b084ca3](https://github.com/hwakabh/repooster/commit/b084ca3ccb34100dc654b5b4727a60ff35a7417e))
+
 ## [0.3.8](https://github.com/hwakabh/repooster/compare/v0.3.7...v0.3.8) (2025-05-06)
 
 
