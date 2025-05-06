@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.8](https://github.com/hwakabh/repooster/compare/v0.3.7...v0.3.8) (2025-05-06)
+
+
+### Other Changes
+
+* **deps:** update hwakabh/semantic-issue-action action to v0.5.6 ([2174efd](https://github.com/hwakabh/repooster/commit/2174efd75577cb9d16d7446196ff910766786afe))
+* **deps:** update hwakabh/semantic-issue-action action to v0.5.6 ([e277475](https://github.com/hwakabh/repooster/commit/e2774757ba0fe3b6d3144e127da7552135f1a408))
+
 ## [0.3.7](https://github.com/hwakabh/repooster/compare/v0.3.6...v0.3.7) (2025-04-29)
 
 
