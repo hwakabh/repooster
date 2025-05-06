@@ -40,7 +40,7 @@ func main() {
 	repoowner := strings.Split(repo, "/")[0]
 	reponame := strings.Split(repo, "/")[1]
 
-	fmt.Println("Hello go-github !")
+	fmt.Println("Hello developer!")
 
 	fmt.Println(">>> Fetching GitHub Personal Access Token ...")
 	token, ret := os.LookupEnv("TOKEN")
