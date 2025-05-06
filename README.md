@@ -41,7 +41,7 @@ Same as binaries, you can start using CLI after downloading image onto your envi
 ```shell
 % export TOKEN='...'
 % docker image pull ghcr.io/hwakabh/repooster:main
-% docker run -e TOKEN=$TOKEN ghcr.io/hwakabh/repooster:main hwakabh/repooster
+% docker run -e TOKEN=$TOKEN ghcr.io/hwakabh/repooster:latest hwakabh/repooster
 ```
 
 <!-- *** -->
