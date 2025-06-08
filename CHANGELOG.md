@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.13](https://github.com/hwakabh/repooster/compare/v0.3.12...v0.3.13) (2025-06-08)
+
+
+### Other Changes
+
+* **deps:** update dependency go to v1.24.4 ([022be91](https://github.com/hwakabh/repooster/commit/022be910755db7b2a78af54163926e1ef1977d0f))
+* **deps:** update dependency go to v1.24.4 ([cbb975c](https://github.com/hwakabh/repooster/commit/cbb975cec42c444842292550e20cf8193a8046b1))
+
 ## [0.3.12](https://github.com/hwakabh/repooster/compare/v0.3.11...v0.3.12) (2025-05-26)
 
 
