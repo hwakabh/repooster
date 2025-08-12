@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.17](https://github.com/hwakabh/repooster/compare/v0.3.16...v0.3.17) (2025-08-12)
+
+
+### Other Changes
+
+* **deps:** update actions/checkout action to v5 ([ca161c4](https://github.com/hwakabh/repooster/commit/ca161c4e8a703c8fef75bbb223f7fe7ba00e0ab0))
+* **deps:** update actions/checkout action to v5 ([6241ac1](https://github.com/hwakabh/repooster/commit/6241ac16023db19309069ea0fdfdcddb458e0440))
+
 ## [0.3.16](https://github.com/hwakabh/repooster/compare/v0.3.15...v0.3.16) (2025-08-11)
 
 
