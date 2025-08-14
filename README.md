@@ -4,6 +4,16 @@ GitHub Repository kickstarter \
 
 <!-- *** -->
 ## What is repooster
+
+TODO (Order of operations):
+- [x] Precheck of initial commit
+- [x] GitHub Operations (updating repository setting)
+- [ ] Slack Operations (creating notification channel for repository)
+- [ ] Git Operations (editing README.md or any other templated files)
+- [ ] GitHub Operations (raising PR for initialization)
+
+### GitHub Operations
+
 With using [`go-github`](https://github.com/google/go-github), `repooster` will do the following configurations:
 
 1. [Workflow Permissions](https://docs.github.com/en/enterprise-cloud@latest/rest/actions/permissions?apiVersion=2022-11-28#set-default-workflow-permissions-for-a-repository)
