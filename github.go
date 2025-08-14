@@ -8,8 +8,13 @@ import (
 	"github.com/google/go-github/v68/github"
 )
 
+type RepositoryEditReqBody struct {
+	has_discussions bool
+	has_projects    bool
+	has_wiki        bool
+}
+
 func FetchAccessToken() string {
-	fmt.Println(">>> Fetching GitHub Personal Access Token ...")
 	token, ret := os.LookupEnv("TOKEN")
 	if ret != true {
 		fmt.Println("Failed to fetch GitHub token, please set TOKEN first.")
@@ -19,17 +24,16 @@ func FetchAccessToken() string {
 	return token
 }
 
-// TODO: fix type for go-github client
 func IsInitialCommit(repo string, client *github.Client, repoowner string, reponame string) bool {
 	// Check commit histories of README.md file and return false if there is other commits
 	fmt.Printf(">>> Getting commit history of %s ...\n", repo)
 
 	// https://pkg.go.dev/github.com/google/go-github/github#RepositoriesService.ListCommits
 	opt := &github.CommitsListOptions{Path: "./README.md"}
-	commits, _, listerr := client.Repositories.ListCommits(context.Background(), repoowner, reponame, opt)
-	if listerr != nil {
+	commits, _, err := client.Repositories.ListCommits(context.Background(), repoowner, reponame, opt)
+	if err != nil {
 		fmt.Println("Failed to fetch list of commits")
-		fmt.Println(listerr)
+		fmt.Println(err)
 		return false
 	}
 
@@ -54,4 +58,64 @@ func IsInitialCommit(repo string, client *github.Client, repoowner string, repon
 	}
 
 	return true
+}
+
+func UpdateWorkflowPermission(repo string, client *github.Client, repoowner string, reponame string) {
+	default_workflow_permission := "write"
+	can_approve_pull_request_reviews := true
+
+	permissions := &github.DefaultWorkflowPermissionRepository{
+		DefaultWorkflowPermissions:   &default_workflow_permission,
+		CanApprovePullRequestReviews: &can_approve_pull_request_reviews,
+	}
+
+	_, _, err := client.Repositories.EditDefaultWorkflowPermissions(context.Background(), repoowner, reponame, *permissions)
+	if err != nil {
+		fmt.Printf("Failed to update default workflow permissions in %s\n", repo)
+		fmt.Println(err)
+		os.Exit(1)
+	}
+}
+
+func AddBranchProtectionRule(repo string, client *github.Client, repoowner string, reponame string) {
+	rules := &github.ProtectionRequest{
+		RequiredStatusChecks: &github.RequiredStatusChecks{
+			Strict: true,
+			// https://github.com/google/go-github/issues/2467#issuecomment-1250072559
+			Checks: &([]*github.RequiredStatusCheck{}),
+		},
+		RequiredPullRequestReviews: &github.PullRequestReviewsEnforcementRequest{
+			DismissStaleReviews:          false,
+			DismissalRestrictionsRequest: nil,
+			RequireCodeOwnerReviews:      false,
+			RequiredApprovingReviewCount: 0,
+		},
+		EnforceAdmins: false,
+		Restrictions:  nil,
+	}
+
+	_, _, err := client.Repositories.UpdateBranchProtection(context.Background(), repoowner, reponame, "main", rules)
+	if err != nil {
+		fmt.Printf("Failed to update branch protection rule in %s\n", repo)
+		fmt.Println(err)
+		os.Exit(1)
+	}
+}
+
+func DisablingRepositoryTabs(repo string, client *github.Client, repoowner string, reponame string) {
+	rbody := RepositoryEditReqBody{
+		false,
+		false,
+		false,
+	}
+	_, _, err := client.Repositories.Edit(context.Background(), repoowner, reponame, &github.Repository{
+		HasDiscussions: &rbody.has_discussions,
+		HasProjects:    &rbody.has_projects,
+		HasWiki:        &rbody.has_wiki,
+	})
+	if err != nil {
+		fmt.Printf("Failed to diable repository tabs in %s\n", repo)
+		os.Exit(1)
+	}
+
 }
