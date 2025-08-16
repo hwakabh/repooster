@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.3.19](https://github.com/hwakabh/repooster/compare/v0.3.18...v0.3.19) (2025-08-15)
+
+
+### Other Changes
+
+* added drafted file for edting files. ([d58712d](https://github.com/hwakabh/repooster/commit/d58712d1f44c304571eb15f2bc18df0d7d6d2ea1))
+* **deps:** bumped from v68 to v74. ([4c3438b](https://github.com/hwakabh/repooster/commit/4c3438b7db8999540da08a413b7634969030e353))
+* **deps:** update module github.com/google/go-github/v68 to v74 ([abce88a](https://github.com/hwakabh/repooster/commit/abce88af4f014468ee973de3166732935d601a2a))
+* **deps:** update module github.com/google/go-github/v68 to v74 ([db28647](https://github.com/hwakabh/repooster/commit/db286473591fcf65ca28442ef6b276a4bfba5f69))
+
+
+### Documentation
+
+* added roadmap for implementations. ([38749b2](https://github.com/hwakabh/repooster/commit/38749b25e36bbf84b3066ac99d99e712779531c5))
+
+
+### Code Refactoring
+
+* separated files ([f17d2ba](https://github.com/hwakabh/repooster/commit/f17d2ba59f3a60dbbd7b84f9d17d79ba323cac24))
+* separated functions for GitHub operations. ([65ca09e](https://github.com/hwakabh/repooster/commit/65ca09e77cd8f7bb2ec2c70d2206eb9b41d7d87a))
+* separated functions per files. ([ad85b59](https://github.com/hwakabh/repooster/commit/ad85b59a8aea8b09c6f1c5c911cfe39c37b50b88))
+
 ## [0.3.18](https://github.com/hwakabh/repooster/compare/v0.3.17...v0.3.18) (2025-08-14)
 
 
