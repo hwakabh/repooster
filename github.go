@@ -8,6 +8,7 @@ import (
 	"github.com/google/go-github/v74/github"
 )
 
+// TODO: fixed field syntax
 type RepositoryEditReqBody struct {
 	has_discussions bool
 	has_projects    bool
@@ -116,6 +117,24 @@ func DisablingRepositoryTabs(repo string, client *github.Client, repoowner strin
 	if err != nil {
 		fmt.Printf("Failed to diable repository tabs in %s\n", repo)
 		os.Exit(1)
+	}
+
+}
+
+func RaisePullRequest(client *github.Client, repoowner string, reponame string, branch_name string) {
+	pr_body := github.NewPullRequest{
+		Title: github.Ptr("chore: project initialization by repooster"),
+		Body:  github.Ptr("test"), // TODO: implement more details
+		Base:  github.Ptr("main"),
+		Head:  github.Ptr(branch_name),
+	}
+	_, resp, err := client.PullRequests.Create(context.Background(), repoowner, reponame, &pr_body)
+	if err != nil {
+		fmt.Println(err)
+		fmt.Printf("failed to create pull request\n")
+	}
+	if resp.StatusCode != 201 {
+		fmt.Errorf("Failed to create pull request: %s\n", resp.Status)
 	}
 
 }

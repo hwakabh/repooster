@@ -14,19 +14,18 @@ import (
 )
 
 func ReplaceStringInFile(fname string, placeholder string, replacement string) error {
-	fmt.Printf(">>> replace [ %s ] in [ %s ]\n", placeholder, fname)
+	fmt.Printf("replace [ %s ] in [ %s ]\n", placeholder, fname)
 	bytes, err := os.ReadFile(fname)
 	if err != nil {
 		fmt.Println()
-		return fmt.Errorf("could not open the file %s\n", fname)
+		return fmt.Errorf("could not open the file [ %s ]\n", fname)
 	}
 	contents := string(bytes)
 	contents = strings.ReplaceAll(contents, placeholder, replacement)
 	err = os.WriteFile(fname, []byte(contents), os.ModePerm)
 	if err != nil {
-		return fmt.Errorf("could not write the file %s\n", fname)
+		return fmt.Errorf("could not write the file [ %s ]\n", fname)
 	}
-	fmt.Println("OK")
 	return nil
 }
 
@@ -77,15 +76,18 @@ func GitCommit(fnames []string) error {
 }
 
 func GitPush(repoowner string, reponame string, branch_name string, token string) error {
+	remote_url := fmt.Sprintf("https://github.com/%s/%s", repoowner, reponame)
+
 	repo, _ := git.PlainOpen(".")
 	remote, err := repo.Remote("origin")
 	if err != nil {
 		return fmt.Errorf("failed to get remote. name: origin")
 	}
+	fmt.Printf("Uploading changes in [ %s ] to [ %s ] ...\n", branch_name, remote_url)
 	return remote.Push(&git.PushOptions{
 		RefSpecs:  []config.RefSpec{config.RefSpec(fmt.Sprintf("+refs/heads/%s:refs/heads/%s", branch_name, branch_name))},
 		Progress:  os.Stdout,
-		RemoteURL: fmt.Sprintf("https://github.com/%s/%s", repoowner, reponame),
+		RemoteURL: remote_url,
 		Auth: &http.BasicAuth{
 			Username: repoowner,
 			Password: token,
