@@ -105,5 +105,14 @@ func main() {
 	}
 
 	// Slack operations
+	user_token := FetchUserToken()
+	fmt.Printf(">>> Creating slack channel for [ %s ]\n", reponame)
+	channel_id := CreateChannel(user_token, reponame)
+	fmt.Println("OK")
+
+	repourl := fmt.Sprintf("https://github.com/%s/%s", repoowner, reponame)
+	fmt.Printf(">>> Set GitHub link to Slack channel topics ...\n")
+	AddRepositoryLinkToChannel(user_token, channel_id, repourl)
+	fmt.Println("OK")
 
 }
