@@ -2,25 +2,57 @@
 GitHub Repository kickstarter \
 `repooster` is coming from "repo" + "booster", and this application will intend to speeding up your GitHub repository setup with single commands.
 
-<!-- *** -->
-## What is repooster
 
-TODO (Order of operations):
-- [x] Precheck of initial commit
-- [x] GitHub Operations (updating repository setting)
-- [ ] Slack Operations (creating notification channel for repository)
-- [ ] Git Operations (editing README.md or any other templated files)
-- [ ] GitHub Operations (raising PR for initialization)
+<!-- *** -->
+## Features
+For boosting up the scaffolding repository setup to developement, `repooster` will do sequencially:
+1. Precheck of initial commit
+2. GitHub Operations (updating repository setting)
+3. Slack Operations (creating notification channel for repository)
+4. File Operations (editing README.md or any other templated files and pushing to remote)
+5. GitHub Operations (raising PR for initialization)
+
+Please note that above features are based on the repository, which have been created from [specific GitHub template](https://github.com/hwakabh/.github), so if you would like to customize more, you could add features to the repository template as well as `repooster`
 
 ### GitHub Operations
-
 With using [`go-github`](https://github.com/google/go-github), `repooster` will do the following configurations:
 
-1. [Workflow Permissions](https://docs.github.com/en/enterprise-cloud@latest/rest/actions/permissions?apiVersion=2022-11-28#set-default-workflow-permissions-for-a-repository)
+- [Workflow Permissions](https://docs.github.com/en/enterprise-cloud@latest/rest/actions/permissions?apiVersion=2022-11-28#set-default-workflow-permissions-for-a-repository)
+- [`main` branch protections](https://docs.github.com/en/rest/branches/branch-protection?apiVersion=2022-11-28#update-branch-protection)
+- [Disabling `Discussions`, `Projects`, and `Wiki` tabs](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository)
+- [Creating initial PR](https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#create-a-pull-request) once after complete all File operations below
 
-2. [`main` branch protections](https://docs.github.com/en/rest/branches/branch-protection?apiVersion=2022-11-28#update-branch-protection)
+### File Operations
+With using [`go-git`](https://github.com/go-git/go-git), `repooster` will do:
+1. Create branch called `feature/init` with checkout
+2. Replace placeholder texts in templated files
+3. Stage all changes to working tree and create commit object
+4. Push the commit to remote repository
 
-3. [Disabling `Discussions`, `Projects`, and `Wiki` tabs](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository)
+### Slack Operations
+For fetching updates on your new repository, Slack notification integrated with GitHub repository is one of the best way. \
+By interacting with [Slack Web APIs](https://api.slack.com/methods), `repooster` will do:
+- create new dedicated channel for your repo by [`conversations.create` endpoint](https://api.slack.com/methods/conversations.create)
+- set link of your GitHub repository as channel topics by [`conversations.setTopic` endpoint](https://api.slack.com/methods/conversations.setTopic)
+
+Also please note that you have to set `SLACK_USER_TOKEN` beforehand. \
+As Slack APIs can handle [several types of its tokens](https://api.slack.com/concepts/token-types), but `repooster` will expect to use OAuth User Token in general.
+
+
+<!-- *** -->
+## Configurations
+
+### `TOKEN`
+As this repository will invoke and update configurations of GitHub repository, we need to set GitHub Token, which has permissions of:
+- `Read` for Commits
+- `Read and write` for Administration
+
+While GitHub has several types of token, we generally expect to use Fine-grained Token. \
+For generating fine-grained tokens, please refer [the official documents](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) for futher information.
+
+### `SLACK_USERTOKEN`
+TBA
+
 
 <!-- *** -->
 ## Distributions
@@ -41,6 +73,7 @@ After downloading the binary, you can easily start using of it, once you exporte
 
 ```shell
 % export TOKEN='...'
+% export SLACK_USER_TOKEN='...'
 % repooster hwakabh/repooster
 ```
 
@@ -50,8 +83,9 @@ Same as binaries, you can start using CLI after downloading image onto your envi
 
 ```shell
 % export TOKEN='...'
+% export SLACK_USER_TOKEN='...'
 % docker image pull ghcr.io/hwakabh/repooster:main
-% docker run -e TOKEN=$TOKEN ghcr.io/hwakabh/repooster:latest hwakabh/repooster
+% docker run -e TOKEN=$TOKEN -e SLACK_USER_TOKEN=$SLACK_USER_TOKEN ghcr.io/hwakabh/repooster:latest hwakabh/repooster
 ```
 
 <!-- *** -->
@@ -93,15 +127,3 @@ Please refer [`ko` official documents](https://ko.build/configuration/) for more
 
 For contribuing this project if you would like, please check [the docs](./CONTRIBUTING.md) first. \
 We are always welcome for any contributions.
-
-<!-- *** -->
-## Configurations
-
-### `TOKEN`
-As this repository will invoke and update configurations of GitHub repository, we need to set GitHub Token, which has permissions of:
-- `Read` for Commits
-- `Read and write` for Administration
-
-While GitHub has several types of token, we generally expect to use Fine-grained Token. \
-For generating fine-grained tokens, please refer [the official documents](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) for futher information.
-
