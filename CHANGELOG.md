@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.4.0](https://github.com/hwakabh/repooster/compare/v0.3.19...v0.4.0) (2025-08-18)
+
+
+### Documentation
+
+* added each operations and updated configurations. ([1f2b560](https://github.com/hwakabh/repooster/commit/1f2b5601d9668c6c275fc1f1857a51c731bf92d6))
+* added each operations and updated configurations. ([dfdacc7](https://github.com/hwakabh/repooster/commit/dfdacc7aca6d89cbabce27f58b4c330f2b2da94d))
+
+
+### Features
+
+* **go-git:** implemented functions to handle files and git. ([f835b66](https://github.com/hwakabh/repooster/commit/f835b66d4c3814ca560bebf3675a0ba12dbed5ff))
+* **go-git:** implemented functions to handle files and git. ([1fcdc25](https://github.com/hwakabh/repooster/commit/1fcdc25e4dfa542b7f7e80e3b8bb609e38f56075))
+* **net/http:** implemented functions to create slack channel. ([5e3e09b](https://github.com/hwakabh/repooster/commit/5e3e09bc11f89b13e1f4f4c8cec137f5e85445c9))
+* **net/http:** implemented functions to create slack channel. ([dbfc8d5](https://github.com/hwakabh/repooster/commit/dbfc8d5363171e1fecd7ccba0c07ae80e273cd18))
+
+
+### Code Refactoring
+
+* added debug message and enabled replacement in README. ([caa7249](https://github.com/hwakabh/repooster/commit/caa7249cb41d8bd851609d7c4d84aa4a2554092d))
+* added debug message and enabled replacement in README. ([02de07e](https://github.com/hwakabh/repooster/commit/02de07e4db7059cab6ba3206c110ed7e082d5972))
+
 ## [0.3.19](https://github.com/hwakabh/repooster/compare/v0.3.18...v0.3.19) (2025-08-15)
 
 
