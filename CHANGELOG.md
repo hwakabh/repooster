@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.5.0](https://github.com/hwakabh/repooster/compare/v0.4.1...v0.5.0) (2025-08-23)
+
+
+### Other Changes
+
+* enabled replacement for README. ([14a875c](https://github.com/hwakabh/repooster/commit/14a875c38bc02b00f653c71623ce481c26838b20))
+
+
+### Continuous Integration
+
+* added pr-commit-body-action. ([858923d](https://github.com/hwakabh/repooster/commit/858923d4312c29f572802b23f142a67293652cd3))
+
+
+### Features
+
+* enhancement ([b860a52](https://github.com/hwakabh/repooster/commit/b860a523cdd41800fd46f1c4db3ae5c2bbc4c65b))
+
 ## [0.4.1](https://github.com/hwakabh/repooster/compare/v0.4.0...v0.4.1) (2025-08-21)
 
 
