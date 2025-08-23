@@ -14,7 +14,7 @@ import (
 )
 
 func ReplaceStringInFile(fname string, placeholder string, replacement string) error {
-	fmt.Printf("replace [ %s ] in [ %s ]\n", placeholder, fname)
+	// fmt.Printf("replace [ %s ] in [ %s ]\n", placeholder, fname)
 	bytes, err := os.ReadFile(fname)
 	if err != nil {
 		fmt.Println()
