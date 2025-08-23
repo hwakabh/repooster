@@ -62,7 +62,7 @@ func main() {
 	if err := CheckoutWithCreateBranch(BranchName); err != nil {
 		fmt.Println(err.Error())
 	}
-	fmt.Printf(">>> Updating placeholder texts on new branch [ %s ] and trigger git-push ...\n", BranchName)
+	fmt.Printf(">>> Updating placeholder strings on new branch [ %s ] and trigger git-push ...\n", BranchName)
 
 	files := [...]string{
 		"README.md",
@@ -70,8 +70,9 @@ func main() {
 		".github/CONTRIBUTING.md",
 	}
 	for _, p := range files {
-		if err := ReplaceStringInFile(p, "{{ GH_REPONAME }}", repoowner); err != nil {
-			fmt.Printf("Failed to update GH_USERNAME in %s\n%s", p, err)
+		fmt.Printf("Replacing string in %s\n", p)
+		if err := ReplaceStringInFile(p, "GH_REPONAME", reponame); err != nil {
+			fmt.Printf("Failed to update GH_REPONAME in %s\n%s", p, err)
 			os.Exit(1)
 		}
 		if err := ReplaceStringInFile(p, "GH_REPONAME", reponame); err != nil {
