@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.5.0](https://github.com/hwakabh/repooster/compare/v0.4.1...v0.5.0) (2025-09-08)
+
+
+### Other Changes
+
+* **deps:** update actions/labeler action to v6 ([607988d](https://github.com/hwakabh/repooster/commit/607988d0a847247d1d344472ca878c14d0381d94))
+* **deps:** update actions/labeler action to v6 ([69c0856](https://github.com/hwakabh/repooster/commit/69c0856fd905e90d52020c69575b89235e30df00))
+* **deps:** update actions/setup-go action to v6 ([7def430](https://github.com/hwakabh/repooster/commit/7def4301cebd1dca6c682cd9bbd18f62c4deb833))
+* **deps:** update actions/setup-go action to v6 ([95cbe0d](https://github.com/hwakabh/repooster/commit/95cbe0df9dce70a256bf138a2c7750013369addb))
+* **deps:** update actions/stale action to v10 ([a9497eb](https://github.com/hwakabh/repooster/commit/a9497eb115600851da6744ab83fd2e58dd0ca588))
+* **deps:** update actions/stale action to v10 ([0913796](https://github.com/hwakabh/repooster/commit/09137962d8da72253f0f92b3d8aa8a241db6bc29))
+* **deps:** update dependency go to v1.25.1 ([8adcd66](https://github.com/hwakabh/repooster/commit/8adcd666c3c6bf9a20a79395c68f3f52558adde7))
+* **deps:** update dependency go to v1.25.1 ([b4bf40f](https://github.com/hwakabh/repooster/commit/b4bf40fbc4d0b676b939585207c0f9ad4037e304))
+* enabled replacement for README. ([14a875c](https://github.com/hwakabh/repooster/commit/14a875c38bc02b00f653c71623ce481c26838b20))
+
+
+### Continuous Integration
+
+* added pr-commit-body-action. ([858923d](https://github.com/hwakabh/repooster/commit/858923d4312c29f572802b23f142a67293652cd3))
+
+
+### Features
+
+* enhancement ([b860a52](https://github.com/hwakabh/repooster/commit/b860a523cdd41800fd46f1c4db3ae5c2bbc4c65b))
+
 ## [0.4.1](https://github.com/hwakabh/repooster/compare/v0.4.0...v0.4.1) (2025-08-21)
 
 
