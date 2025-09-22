@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.1](https://github.com/hwakabh/repooster/compare/v0.5.0...v0.5.1) (2025-09-22)
+
+
+### Continuous Integration
+
+* removed triggers with chore commits. ([3a96c0f](https://github.com/hwakabh/repooster/commit/3a96c0f273ed474d13c911db4f9feb435c5096ed))
+* removed triggers with chore commits. ([a29735b](https://github.com/hwakabh/repooster/commit/a29735bfb8dd2d733044ef7e82d027e7ca6f3e42))
+
 ## [0.5.0](https://github.com/hwakabh/repooster/compare/v0.4.1...v0.5.0) (2025-09-08)
 
 
