@@ -4,7 +4,6 @@
       "release-type": "go",
       "changelog-sections": [
         { "type": "build", "section": "Build System" },
-        { "type": "chore", "section": "Other Changes" },
         { "type": "ci", "section": "Continuous Integration" },
         { "type": "docs", "section": "Documentation" },
         { "type": "feat", "section": "Features" },
