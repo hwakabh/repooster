@@ -6,6 +6,7 @@ require (
 	github.com/go-git/go-git/v6 v6.0.0-20250728093604-6aaf1933ecab
 	github.com/google/go-github/v74 v74.0.0
 	github.com/google/go-github/v75 v75.0.0
+	github.com/google/go-github/v76 v76.0.0
 )
 
 require (
