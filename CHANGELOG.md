@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.2](https://github.com/hwakabh/repooster/compare/v0.5.1...v0.5.2) (2025-11-02)
+
+
+### Bug Fixes
+
+* **deps:** imported modules versions. ([9016428](https://github.com/hwakabh/repooster/commit/9016428afc04e5baadf04fdebb6349a6509a8721))
+* **go-github:** renamed method name from Edit* to Update* followed to upstreams. ([de0f3f7](https://github.com/hwakabh/repooster/commit/de0f3f7671064d037ae9411614ad7cfb1404b9e9))
+
 ## [0.5.1](https://github.com/hwakabh/repooster/compare/v0.5.0...v0.5.1) (2025-09-22)
 
 
