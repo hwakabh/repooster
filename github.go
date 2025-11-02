@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/google/go-github/v74/github"
+	"github.com/google/go-github/v76/github"
 )
 
 // TODO: fixed field syntax
@@ -70,7 +70,7 @@ func UpdateWorkflowPermission(repo string, client *github.Client, repoowner stri
 		CanApprovePullRequestReviews: &can_approve_pull_request_reviews,
 	}
 
-	_, _, err := client.Repositories.EditDefaultWorkflowPermissions(context.Background(), repoowner, reponame, *permissions)
+	_, _, err := client.Repositories.UpdateDefaultWorkflowPermissions(context.Background(), repoowner, reponame, *permissions)
 	if err != nil {
 		fmt.Printf("Failed to update default workflow permissions in %s\n", repo)
 		fmt.Println(err)
