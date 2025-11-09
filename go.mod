@@ -4,7 +4,7 @@ go 1.25.4
 
 require (
 	github.com/go-git/go-git/v6 v6.0.0-20250728093604-6aaf1933ecab
-	github.com/google/go-github/v76 v76.0.0
+	github.com/google/go-github/v78 v78.0.0
 )
 
 require (
