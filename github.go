@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/google/go-github/v76/github"
+	"github.com/google/go-github/v78/github"
 )
 
 // TODO: fixed field syntax
