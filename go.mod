@@ -5,6 +5,7 @@ go 1.25.5
 require (
 	github.com/go-git/go-git/v6 v6.0.0-20250728093604-6aaf1933ecab
 	github.com/google/go-github/v80 v80.0.0
+	github.com/google/go-github/v81 v81.0.0
 )
 
 require (
