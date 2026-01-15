@@ -1,6 +1,6 @@
 module github.com/hwakabh/repooster
 
-go 1.25.5
+go 1.25.6
 
 require (
 	github.com/go-git/go-git/v6 v6.0.0-20250728093604-6aaf1933ecab
