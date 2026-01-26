@@ -37,7 +37,7 @@ jobs:
         # https://github.com/github/issue-labeler
 
       - name: Check Issue Title
-        uses: hwakabh/semantic-issue-action@v0.6.4
+        uses: hwakabh/semantic-issue-action@v0.6.5
         with:
           repo: ${{ github.repository }}
           token: ${{ secrets.GITHUB_TOKEN }}
