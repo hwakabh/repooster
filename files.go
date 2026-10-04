@@ -9,6 +9,7 @@ import (
 	"github.com/go-git/go-git/v6"
 	"github.com/go-git/go-git/v6/config"
 	"github.com/go-git/go-git/v6/plumbing"
+	"github.com/go-git/go-git/v6/plumbing/client"
 	"github.com/go-git/go-git/v6/plumbing/object"
 	"github.com/go-git/go-git/v6/plumbing/transport/http"
 )
@@ -88,9 +89,11 @@ func GitPush(repoowner string, reponame string, branch_name string, token string
 		RefSpecs:  []config.RefSpec{config.RefSpec(fmt.Sprintf("+refs/heads/%s:refs/heads/%s", branch_name, branch_name))},
 		Progress:  os.Stdout,
 		RemoteURL: remote_url,
-		Auth: &http.BasicAuth{
-			Username: repoowner,
-			Password: token,
+		ClientOptions: []client.Option{
+			client.WithHTTPAuth(&http.BasicAuth{
+				Username: repoowner,
+				Password: token,
+			}),
 		},
 	})
 
